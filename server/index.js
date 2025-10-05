@@ -11,11 +11,15 @@ const httpServer = createServer(app);
 const io = new Server(httpServer, {
   cors: {
     origin: process.env.CLIENT_URL || 'http://localhost:3000',
-    methods: ['GET', 'POST']
+    methods: ['GET', 'POST'],
+    credentials: true
   }
 });
 
-app.use(cors());
+app.use(cors({
+  origin: process.env.CLIENT_URL || 'http://localhost:3000',
+  credentials: true
+}));
 app.use(express.json());
 
 // In-memory storage for active games (replace with Redis in production)
@@ -29,7 +33,8 @@ app.get('/health', (req, res) => {
 
 // Socket.io connection handling
 io.on('connection', (socket) => {
-  console.log('Client connected:', socket.id);
+  console.log('✅ Client connected:', socket.id);
+  console.log('   Origin:', socket.handshake.headers.origin);
 
   // Create a new game room
   socket.on('create-game', ({ roomName, hostId, hostName, maxPlayers, smallBlind, bigBlind, buyInAmount }) => {
