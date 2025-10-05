@@ -7,7 +7,19 @@
       "Bash(sudo tee:*)",
       "Bash(sudo apt:*)",
       "Bash(sudo apt install:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Read(//home/jgkal/**)",
+      "Bash(gh:*)",
+      "Bash(test:*)",
+      "Bash(psql:*)",
+      "Bash(cp:*)",
+      "Bash(npm run dev:*)",
+      "Bash(git config:*)",
+      "Bash(~/ngrok http 3001)",
+      "Bash(git remote add:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)"
     ],
     "deny": [],
     "ask": []

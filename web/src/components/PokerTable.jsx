@@ -5,6 +5,7 @@ import Card from './Card';
 import Chat from './Chat';
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL || 'http://localhost:3001';
+console.log('SERVER_URL in PokerTable:', SERVER_URL);
 const socket = io(SERVER_URL);
 
 function PokerTable({ user }) {
