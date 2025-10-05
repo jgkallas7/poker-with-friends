@@ -1,0 +1,15 @@
+{
+  "name": "poker-friends-app",
+  "version": "1.0.0",
+  "description": "Real-time poker app for friends with cash game tracking",
+  "scripts": {
+    "server": "node server/index.js",
+    "server:dev": "nodemon server/index.js",
+    "web": "cd web && npm run dev",
+    "mobile": "cd mobile && npm start",
+    "install:all": "npm install && cd server && npm install && cd ../web && npm install && cd ../mobile && npm install"
+  },
+  "keywords": ["poker", "real-time", "multiplayer", "chat"],
+  "author": "",
+  "license": "MIT"
+}
