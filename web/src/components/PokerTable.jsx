@@ -1,12 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
-import { io } from 'socket.io-client';
 import Card from './Card';
 import Chat from './Chat';
-
-const SERVER_URL = import.meta.env.VITE_SERVER_URL || 'http://localhost:3001';
-console.log('SERVER_URL in PokerTable:', SERVER_URL);
-const socket = io(SERVER_URL);
+import socket from '../socket';
 
 function PokerTable({ user }) {
   const { gameId } = useParams();

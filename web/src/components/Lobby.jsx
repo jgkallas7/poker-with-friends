@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { io } from 'socket.io-client';
-
-const SERVER_URL = import.meta.env.VITE_SERVER_URL || 'http://localhost:3001';
-console.log('SERVER_URL in Lobby:', SERVER_URL);
-const socket = io(SERVER_URL);
+import socket from '../socket';
 
 function Lobby({ user, setUser }) {
   const navigate = useNavigate();
