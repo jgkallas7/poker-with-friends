@@ -122,17 +122,23 @@ io.on('connection', (socket) => {
 
     const gameState = game.startHand();
 
+    console.log(`Hand started in game ${gameId}`);
+    console.log(`  Players in game: ${game.players.length}`);
+    console.log(`  PlayerSockets Map size: ${playerSockets.size}`);
+
     // Send personalized game state to each player (only show their own cards)
     game.players.forEach(player => {
       const playerSocketId = playerSockets.get(player.id);
+      console.log(`  Player ${player.id} -> Socket ${playerSocketId}`);
       if (playerSocketId) {
         io.to(playerSocketId).emit('hand-started', {
           gameState: game.getGameState(player.id)
         });
+        console.log(`    ✅ Sent hand-started to ${player.name}`);
+      } else {
+        console.log(`    ❌ No socket found for ${player.name}`);
       }
     });
-
-    console.log(`Hand started in game ${gameId}`);
   });
 
   // Player action (fold, check, call, raise)
