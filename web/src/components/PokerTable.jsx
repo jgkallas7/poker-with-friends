@@ -16,8 +16,13 @@ function PokerTable({ user }) {
   const [buyInAmount, setBuyInAmount] = useState(1000);
 
   useEffect(() => {
+    console.log('PokerTable: Setting up socket listeners');
+    console.log('Socket ID:', socket.id);
+    console.log('Socket connected:', socket.connected);
+
     // Listen for game updates
     socket.on('hand-started', ({ gameState }) => {
+      console.log('✅ Received hand-started event!', gameState);
       setGameState(gameState);
     });
 
@@ -58,6 +63,8 @@ function PokerTable({ user }) {
   }, []);
 
   const startHand = () => {
+    console.log('🎲 Starting hand...', { gameId, playerId: user.id });
+    console.log('Socket connected:', socket.connected);
     socket.emit('start-hand', { gameId, playerId: user.id });
   };
 
